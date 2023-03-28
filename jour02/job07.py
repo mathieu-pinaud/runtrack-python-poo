@@ -85,7 +85,7 @@ class Joueur:
         score = 0
         for i in self.__mes_cartes:
             score += i.points()
-        self.mon_score = score
+        self.__mon_score = score
 
     def __check_stop(self):
         if self.__mon_score > 21:
@@ -94,7 +94,7 @@ class Joueur:
     def mon_tour(self):
         self.__check_stop()
         if self.stop == False:
-            print("Votre score est de", self.mon_score, "Voulez vous continuer a jouer ?")
+            print("Votre score est de", self.__mon_score, "Voulez vous continuer a jouer ?")
             if input('tapez O pour continuer a jouer une autre entrée sera considédrée comme un stop') == 'O':
                 self.pioche()
             else:
@@ -111,7 +111,7 @@ class Croupier(Joueur):
         self.__check_stop()
         
     def __check_stop(self):
-        if self.mon_score >= 17:
+        if self.GetScore() >= 17:
             self.stop = True
 
 def creer_liste_joueurs(paquet):
@@ -141,6 +141,8 @@ def le_jeu(liste_joueurs):
             print(type(liste_joueurs[i]))
             liste_joueurs[i].mon_tour()
         liste_joueurs[nb_joueurs].CroupierTurn()
+    for i in liste_joueurs:
+        print(i.GetScore())
     return(liste_joueurs)
         
 paquet = Jeu()
