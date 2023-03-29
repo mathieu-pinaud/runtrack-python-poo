@@ -138,11 +138,8 @@ def le_jeu(liste_joueurs):
     while (stop_game(liste_joueurs) == False):
         for i in range(nb_joueurs):
             print("Joueur", i + 1)
-            print(type(liste_joueurs[i]))
             liste_joueurs[i].mon_tour()
         liste_joueurs[nb_joueurs].CroupierTurn()
-    for i in liste_joueurs:
-        print(i.GetScore())
     return(liste_joueurs)
         
 paquet = Jeu()
